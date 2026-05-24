@@ -1,0 +1,14 @@
+<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <!-- Outer oval border -->
+  <ellipse cx="50" cy="50" rx="48" ry="42" fill="none" stroke="#065F46" stroke-width="2.5"/>
+  <ellipse cx="50" cy="50" rx="44" ry="38" fill="none" stroke="#047857" stroke-width="0.8"/>
+  
+  <!-- Inner light background -->
+  <ellipse cx="50" cy="50" rx="42" ry="36" fill="#FEFDF4" opacity="0.9"/>
+  
+  <!-- Main text - Sibarítco -->
+  <text x="50" y="45" font-family="Georgia, serif" font-size="20" font-weight="bold" fill="#065F46" text-anchor="middle" letter-spacing="0.5" style="font-style: italic;">Sibarítco</text>
+  
+  <!-- Subtitle -->
+  <text x="50" y="63" font-family="Georgia, serif" font-size="7" fill="#047857" text-anchor="middle" letter-spacing="1.2" font-weight="600">DESDE 1991</text>
+</svg>

@@ -1,0 +1,31 @@
+services:
+  backend:
+    image: delivery-backend:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: delivery-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - APP_HOST=0.0.0.0
+      - APP_PORT=8000
+      - APP_DEBUG=false
+      - PYTHONUNBUFFERED=1
+    env_file:
+      - .env.example
+      - .env
+    networks:
+      - delivery-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 5s
+
+networks:
+  delivery-network:
+    driver: bridge

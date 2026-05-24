@@ -1,0 +1,22 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    
+    steps:
+      - name: Deploy to Server
+        run: |
+          echo "Deploy workflow configured"
+          echo "To deploy your app, run from your server:"
+          echo "cd /home/alumno/Delivery-Custom-App-INGSW2-FRONTEND"
+          echo "git pull origin main"
+          echo "docker compose up -d --build"

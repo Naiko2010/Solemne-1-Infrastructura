@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+@utility no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@theme {
+  /* Paleta verde brand */
+  --color-primary-50:  #f0fdf4;
+  --color-primary-100: #dcfce7;
+  --color-primary-200: #bbf7d0;
+  --color-primary-300: #86efac;
+  --color-primary-400: #4ade80;
+  --color-primary-500: #22c55e;
+  --color-primary-600: #16a34a;
+  --color-primary-700: #15803d;
+  --color-primary-800: #065f46;
+  --color-primary-900: #054035;
+
+  /* Fuente base */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+
+  /* Radios */
+  --radius-sm:  0.375rem;
+  --radius-md:  0.625rem;
+  --radius-lg:  0.875rem;
+  --radius-xl:  1.25rem;
+  --radius-2xl: 1.5rem;
+}
+
+@layer base {
+  :root {
+    /* shadcn/ui CSS variables — paleta verde */
+    --background:        0 0% 97%;
+    --foreground:        220 13% 13%;
+
+    --card:              0 0% 100%;
+    --card-foreground:   220 13% 13%;
+
+    --popover:           0 0% 100%;
+    --popover-foreground: 220 13% 13%;
+
+    --primary:           160 91% 20%;   /* #065f46 */
+    --primary-foreground: 150 60% 95%;  /* #ecfdf5 */
+
+    --secondary:         150 30% 96%;
+    --secondary-foreground: 160 91% 20%;
+
+    --muted:             150 20% 96%;
+    --muted-foreground:  220 9% 44%;
+
+    --accent:            150 60% 95%;
+    --accent-foreground: 160 91% 20%;
+
+    --destructive:       0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border:            214 32% 91%;
+    --input:             214 32% 91%;
+    --ring:              160 91% 20%;
+
+    /* Semánticos extra */
+    --warning:           38 92% 50%;
+    --warning-foreground: 38 100% 15%;
+    --info:              217 91% 60%;
+    --info-foreground:   217 100% 15%;
+
+    /* Estados de mesas */
+    --mesa-libre:     160 84% 39%;
+    --mesa-ocupada:   0 84% 60%;
+    --mesa-cobro:     38 92% 50%;
+    --mesa-inactiva:  214 20% 69%;
+
+    --radius: 0.625rem;
+  }
+
+  * {
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring) / 0.5);
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: var(--font-sans);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    min-height: 100vh;
+  }
+}
+
+/* ── Animaciones globales ──────────────────────────────────── */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: scale(0.94) translateY(12px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+@keyframes modal-out {
+  from { opacity: 1; transform: scale(1) translateY(0); }
+  to   { opacity: 0; transform: scale(0.96) translateY(6px); }
+}
+
+@keyframes slide-in-from-right {
+  from { opacity: 0; transform: translateX(16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-from-left {
+  from { opacity: 0; transform: translateX(-16px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+@keyframes pop-in {
+  0%   { opacity: 0; transform: scale(0.88); }
+  70%  { transform: scale(1.04); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in-up        { animation: fade-in-up 0.4s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-fade-in           { animation: fade-in 0.3s ease both; }
+.animate-modal-in          { animation: modal-in 0.22s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-slide-in-right    { animation: slide-in-from-right 0.25s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-slide-in-left     { animation: slide-in-from-left 0.25s cubic-bezier(0.4,0,0.2,1) both; }
+.animate-pop-in            { animation: pop-in 0.28s cubic-bezier(0.34,1.56,0.64,1) both; }
+
+/* Delays escalonados para grids */
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
+.stagger-5 { animation-delay: 0.25s; }
+.stagger-6 { animation-delay: 0.30s; }
+
+/* ── Radix Dialog — override animaciones ───────────────────── */
+[data-radix-popper-content-wrapper] {
+  animation: fade-in 0.18s ease both;
+}
+
+[role="dialog"][data-state="open"] > * {
+  animation: modal-in 0.22s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+[role="dialog"][data-state="closed"] > * {
+  animation: modal-out 0.16s cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+/* ── Sidebar nav items hover ────────────────────────────────── */
+nav button {
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+}
+
+nav button:active {
+  transform: scale(0.97);
+}

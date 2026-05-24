@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.Python
+venv/
+env/
+.venv/
+.env
+.env.*
+*.log
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.iml
+
+# Testing
+.pytest_cache/
+.coverage/
+htmlcov/
+.tox/
+
+# Documentation
+*.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.circleci/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build
+dist/
+build/
+*.egg
+
+# Node (if there's frontend stuff)
+node_modules/
+.next/
+out/
+
+# Other
+.env.example
+tests/
+DOCKERFILE
+docker-compose.yml
